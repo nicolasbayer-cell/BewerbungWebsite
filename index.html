@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nicolas — Personal Site</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300;1,9..144,700&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles_BIO.css" />
+</head>
+
+<body>
+
+<button id="projCloseBtn" aria-label="Close project">✕</button>
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#top">
+      <span class="brandMark">N</span>
+      <span>Nicolas</span>
+    </a>
+    <nav class="nav">
+      <a href="#roadmap3d">Roadmap</a>
+      <a href="#projects">Projects</a>
+      <a href="#outside">Outside</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="iconBtn" id="themeBtn" type="button" aria-label="Toggle theme">
+      <span class="iconSun">☀</span><span class="iconMoon">☾</span>
+    </button>
+  </header>
+
+  <main id="top">
+
+       <!-- HERO -->
+    <section class="hero">
+      <div class="heroInner">
+        <div class="heroText">
+          <p class="kicker"><span class="pip"></span>Hello! Nice to see you here!</p>
+          <h1>I'm <em>Nicolas</em><span class="smile"> :)</span></h1>
+          <p class="lead">
+            I created this website so that you can get to know me a little better!
+            Just keep scrolling and you'll find out more about my life, my education and the research projects
+            I have worked on so far.
+          </p>
+          <div class="actions">
+            <a class="btnP" href="#roadmap3d">Learn about my life</a>
+            <a class="btnG" href="#projects">Check out my research</a>
+          </div>
+          <div class="chips">
+            <span class="chip chipU">iGEM 2021 · Synthetic Biology</span>
+            <span class="chip chipT">Biology (BSc) · RPTU Kaiserslautern</span>
+            <span class="chip chipO">Master (MSc) · RPTU Kaiserslautern</span>
+          </div>
+        </div>
+
+        <!-- ✅ Tall interactive gallery (3 images) -->
+        <div class="heroGallery" id="heroGallery">
+          <div class="galSlide galActive">
+            <img src="img/Bild19.jpg" alt="Nicolas in the lab">
+            <div class="galOverlay"></div>
+          </div>
+
+          <div class="galSlide">
+            <img src="img/Bild26.jpg" alt="Nicolas — portrait">
+            <div class="galOverlay"></div>
+          </div>
+
+          <div class="galSlide">
+            <img src="img/Bild29.jpg" alt="Nicolas outside">
+            <div class="galOverlay"></div>
+          </div>
+
+          <div class="galSlide">
+            <img src="img/IchMitStöppelInNase.jpeg" alt="Nicolas outside">
+            <div class="galOverlay"></div>
+          </div>
+
+          <div class="galSlide">
+            <img src="img/Bild3.jpg" alt="Nicolas Mikroskop">
+            <div class="galOverlay"></div>
+          </div>
+
+          <div class="galSlide">
+            <img src="img/Bild28.jpg" alt="Nicolas Galant">
+            <div class="galOverlay"></div>
+          </div>
+
+          <button class="galArrow galPrev" aria-label="Previous photo">&#8592;</button>
+          <button class="galArrow galNext" aria-label="Next photo">&#8594;</button>
+
+          <div class="galDots">
+            <button class="galDot galDotActive" data-idx="0" aria-label="Photo 1"></button>
+            <button class="galDot" data-idx="1" aria-label="Photo 2"></button>
+            <button class="galDot" data-idx="2" aria-label="Photo 3"></button>
+            <button class="galDot" data-idx="3" aria-label="Photo 4"></button>
+            <button class="galDot" data-idx="4" aria-label="Photo 5"></button>
+            <button class="galDot" data-idx="5" aria-label="Photo 6"></button>
+          </div>
+
+          <div class="heroBadge">Thanks for stopping by!</div>
+        </div>
+      </div>
+
+      <div class="ticker" aria-hidden="true"><div class="tickerInner">
+        <span>Biology</span><i>·</i><span>Synthetic Biology</span><i>·</i><span>iGEM 2021</span><i>·</i><span>Analogue Photography</span><i>·</i><span>Kaiserslautern</span><i>·</i><span>Lisbon</span><i>·</i><span>Nanophysiology</span><i>·</i>
+        <span>Biology</span><i>·</i><span>Synthetic Biology</span><i>·</i><span>iGEM 2021</span><i>·</i><span>Analogue Photography</span><i>·</i><span>Kaiserslautern</span><i>·</i><span>Lisbon</span><i>·</i><span>Nanophysiology</span><i>·</i>
+      </div></div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section id="roadmap3d" class="roadSection">
+      <div class="secHead">
+        <div class="secLabel"><span class="secN">01</span><span class="secR"></span>Life Roadmap</div>
+        <h2>About my life</h2>
+        <p class="secSub">
+          Scroll the panel on the right — the 3D path evolves as you move through my life.
+        </p>
+      </div>
+
+      <div class="roadWrap">
+        <div class="roadStage">
+          <canvas id="roadCanvas"></canvas>
+          <div class="hud">
+            <div class="hudPill"><span class="hudDot"></span><span>Scroll · click a node</span></div>
+            <div class="hudProg"><div class="hudFill" id="progFill"></div></div>
+          </div>
+        </div>
+        <aside class="roadPanel" id="roadPanel"></aside>
+      </div>
+
+      <!-- milestone data -->
+      <div class="srOnly" id="msData">
+        <div class="ms" data-i="0" data-title="Born and raised" data-sub="Where it all started" data-col="teal" data-img="img/childhood.jpg">
+          <p>I grew up in a little city called <strong>Landau</strong> in the very south west of Germany, surrounded by vineyards and forests.</p>
+          <p>And as you can see, I've always had quite the taste for the good things in life - like <em>Nutella</em>!</p>
+        </div>
+        <div class="ms" data-i="1" data-title="Fast forward: graduation" data-sub="No plan, just vibes" data-col="orange" data-img="img/schule.jpg">
+          <p>Fast forward throughout school and graduation. I was 18 and had <strong>NO IDEA</strong> what to do with my life!</p>
+          <p>That's when a friend's mom approached me about volunteering as a social worker. And since I didn't know which job to learn or what to study, I said <em>yes</em>.</p>
+        </div>
+        <div class="ms" data-i="2" data-title="Social year — Wilde 13" data-sub="Meaningful work" data-col="teal" data-img="img/wilde13Bärlauch.jpg">
+          <p>So I ended up doing a social year in a day care center for kids with special needs, a great place called <em>"Wilde 13"</em> near my hometown.</p>
+          <p>And it was actually a very exciting and fulfilling experience — it almost made me become a social worker!</p>
+        </div>
+        <div class="ms" data-i="3" data-title="Switch to natural science" data-sub="Bio-logical!" data-col="orange" data-img="img/rptu.jpeg">
+          <p>But in the end, I decided that I wanted to learn more about the world. And because biology had always fascinated me in school, I chose to do a <em>biology bachelor</em> at the <strong>University of Kaiserslautern</strong>.</p>
+          <p>This city is entirely surrounded by forests, perfect for a nature enthusiast like me!</p>
+        </div>
+        <div class="ms" data-i="4" data-title="iGEM & Bachelor's" data-sub="Gathering experience" data-col="teal" data-img="img/chlamy.jpg">
+          <p>I learned a lot during my bachelor's studies and even participated in an international science competition called <em>iGEM</em>. It was challenging, but also lots of fun and prompted me to continue my scientific journey.</p>
+        </div>
+        <div class="ms" data-i="5" data-title="Scholarship" data-sub="Muito fixe!" data-col="orange" data-img="img/stusti.jpg">
+          <p>At the end of my bachelor's, I was able to land a scholarship with the <em>Studienstiftung des deutschen Volkes</em>. They supported me financially and enabled me to travel abroad. With their help, I could take two language classes in Lisbon and get my Portuguese up to <strong>B2</strong> 💪</p>
+        </div>
+        <div class="ms" data-i="6" data-title="Master's - and now?" data-sub="The future is animal-free" data-col="orange" data-img="img/IchBeimAutoklav.jpeg">
+          <p>Now I finished my master's and am looking forward to continue my carrier. I'd love to contribute to new <em>research & manufacturing approaches</em> which <strong>advance us humans</strong> but also <strong>protect other animals</strong>. </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="secLabel"><span class="secN">02</span><span class="secR"></span>Projects</div>
+      <h2>What I have worked on so far</h2>
+      <p class="secSub">Each project has its own scrollable container. Just click on them to get a more in-depth view on the project!</p>
+
+      <div class="projGrid">
+        <article class="projCard projTeal">
+          <div class="projBar"></div>
+          <div class="projScroll">
+            <div class="projMeta"><span class="projN">01</span><span class="projTag">Synthetic Biology</span></div>
+            <h3>iGEM 2021 —<br>MOCLOMANIA</h3>
+            <div class="projImages">
+
+  <figure class="projFigure">
+    <div class="projImgSlot"><img src="img/iGEM 2021/teamfoto iGEM.jpg" alt="iGEM Teamfoto"></div>
+    <figcaption class="projCaption">
+      This is our 2021 iGEM team! Even though the competition was quite exhausting, it was a lot of fun working together. We all learned a lot!
+    </figcaption>
+  </figure>
+
+  <figure class="projFigure">
+    <div class="projImgSlot"><img src="img/iGEM 2021/moclo scheme 2. try.png" alt="MoClo Scheme second"></div>
+    <figcaption class="projCaption">
+      An exemplary illustration of the genetic components that can be assembled into transcriptional cassettes via Modular Cloning!
+    </figcaption>
+  </figure>
+
+  <figure class="projFigure">
+    <div class="projImgSlot"><img src="img/iGEM 2021/leishmania logo und title 2. try.png" alt="leishmania + logo and title second"></div>
+    <figcaption class="projCaption">
+      Here you can see how Leishmania look up close! But in our logo, they look way cuter...
+    </figcaption>
+  </figure>
+
+</div>
+            <p>In 2021, 9 biology bachelor's students from the RPTU Kaiserslautern got together to participate in iGEM, an <strong>international scientific competition</strong> for synthetic biology. It encourages 
+              young researchers from all over the glove to develop <strong>new biotechnological approaches</strong> and connect with eachother!</p>
+            <p>Well, I was one of these nine students! And did I know what I had gotten myself into? God, no! Did I enjoy it - tremendously! We quickly came up with a very exciting research project - <strong>MOCLOMANIA</strong>:
+             Our goal was to establish <strong>Modular Cloning</strong> in the protozoan parasite <em>Leishmania tarentolae</em>. Why? Because unlike bacteria, Leishmania have a human-like post-translational 
+             glycolyzation pattern, which makes them promising hosts for the recombinant production of therapeutic proteins. Furthermore, they can be farmed in big automated cultivators just like bacteria, facilitating large-scale production.</p>
+            <p>And why <strong>Modular Cloning</strong>? Because it is one of the most versatile and practical cloning systems out there! It was thought up by <em>Weber et al.</em> in 2011, is based on <em>Golden Gate Cloning</em> and utilizes different kinds of type IIS restriction enzymes 
+              which allow for the seamless construction of multi-level genetic cassettes based on individual gene components!</p>
+            <p>We created a large vector library of genetic components such as promoters, coding sequences or terminators and made them compatible for expression in Leishmania. 
+                These components work like building bricks for transcriptional units which can now be employed by others for their research or manufacturing purposes.</p>
+            <p>Our project could even be made into a publication which you can find <u><strong><a href="https://doi.org/10.15698/mic2024.04.821">here</a></strong></u>. You can also check out our iGEM 2021 <u><strong><a href="https://2021.igem.org/Team:TU_Kaiserslautern">project website</a></strong></u> where you can learn a lot more about Leishmania, Modular Cloning and the iGEM competition itself!</p>
+            <a class="projBtn projBtnT" href="#contact">Ask me about it →</a>
+          </div>
+        </article>
+
+        <article class="projCard projOrange">
+          <div class="projBar"></div>
+          <div class="projScroll">
+            <div class="projMeta"><span class="projN">02</span><span class="projTag">Cell Biology</span></div>
+            <h3>Bachelor's thesis —<br>Probing the Integrin Adhesome</h3>
+            <div class="projImages">
+
+  <figure class="projFigure">
+    <div class="projImgSlot"><img src="img/meine bachelorarbeit/RA vs FA scheme.png" alt="RA vs FA Scheme"></div>
+    <figcaption class="projCaption">
+      Schematic overview of the different cell-matrix adhesions occurring in mammalian cells in 2D cell culture. <strong>Focal adhesions</strong> (red), which mediate cell migration and dynamic attachment, particularly at the cell periphery, are considered <em>canonical</em>. Meanwhile, many other integrin-based adhesions are devoid of focal adhesion markers and thus considered <em>non-canonical</em>. They are morphologically diverse, ranging from individualized subcellular <strong>plaques</strong> (blue) to more interconnected <strong>adhesion networks</strong> (green). Some integrins are even left in the substratum after migration as <strong>retraction fibers</strong> (pink). While the term <strong>reticular adhesion</strong> <em>RA</em> was previously used to refer only to the plaque-like structures, recent research by <u><em><a href="https://www.nature.com/articles/s41467-024-46381-x?fromPaywallRec=true">Lukas et al.</a></em></u> has revealed that all three non-canonical adhesion types share common molecular markers and can thus be grouped under the umbrella term of RAs. Schematic adapted from <u><em><a href="https://www.nature.com/articles/s41467-024-46381-x?fromPaywallRec=true">Lukas et al.</a></em></u>
+    </figcaption>
+  </figure>
+
+  <figure class="projFigure">
+    <div class="projImgSlot"><img src="img/meine bachelorarbeit/APEX2 scheme.png" alt="APEX2 Scheme"></div>
+    <figcaption class="projCaption">
+      Schematic overview of the biotinylation-based proximity labeling as catylzed by APEX2. Here, the <strong>protein of interest</strong> <em>POI</em> is bound to DNA and tagged with the peroxidase which oxidized biotin phenol to biotin phenoxyl upon addition of H2O2. The phenoxyl radicals then attach to tyrosines in proteins near the POI within a diffusion radius of approx. 20 nm. Schematic adapted from <u><em><a href="https://www.frontiersin.org/journals/genetics/articles/10.3389/fgene.2020.00450/full">Ummethum et al.</a></em></u>
+    </figcaption>
+  </figure>
+
+  <figure class="projFigure">
+    <div class="projImgSlot"><img src="img/meine bachelorarbeit/microscopy colocalization.png" alt="microscopy"></div>
+    <figcaption class="projCaption">
+      A figure from my bachelor's thesis in which I show the colocalization of <strong>biotinylation signal</strong> <em>biotin</em> with FLAG-tagged <strong>integrin &#946;5</strong> <em>Int-&#946;5-FLAG</em> at an exemplary subnuclear RA (characterized by the tagged marker protein <strong>Stonin1</strong> <em>eGFP-Stn1</em>). The line blot on the right depicts the relative fluorescence intensities measured for the different channels along a line of approx. 18 µm drawn across the adhesion. From this, I could conclude that the integrin-coupled labeling reaction actually produces spacially specific biotinylation at sites of RAs.
+    </figcaption>
+  </figure>
+
+</div>
+            <p>After iGEM, I didn't stay in synthetic biology. Instead, a lab practical at the <u><strong><a href="https://bio.rptu.de/en/fgs/nanophysiology">Nanophysiology</a></strong></u> working group by <em>Prof. Tanja Maritzen</em> took my interest into another direction! Their research focuses on the different molecular structures formed by mammalian cells to interact with and adhere to the <strong>extracellular matrix</strong> <em>ECM</em>. 
+              While some of these adhesion structures, such as focal adhesions, have already been extensively characterized by previous research and are considered <em>canonical</em>, a distinct class of adhesions has recently emerged as a new topic of research.</p> 
+            <p>These so-called <strong>reticular adhesions</strong> <em>RAs</em> are considered <em>non-canonical</em> because they have a unique morphology and a protein pool which lacks many canonical adhesion proteins
+              and is instead enriched in encytosis-associated proteins! The exact physiological function of these RAs, to this day, remains elusive. <u><em><a href="https://www.nature.com/articles/s41556-018-0220-2">Lock et al.</a></em></u> have implicated them in the stable attachment of cells to the ECM substrate, especially in the context of mitosis. The goal of Prof. Maritzen and her research crew is to identify the protein interaction network responsible for the formation, modulation and disassembly of RAs.</p>
+            <p>Like most other ECM adhesions, RAs rely on transmembrane proteins called <strong>integrins</strong> to bridge between the intracellular and extracellular environment. In fact, the specific integrin heterodimer <em>integrin &#945;V&#946;5</em> constitutes a hallmark of RAs. Thus, probing the protein pool surrounding these integrin dimers might help to identify other key players associated with the reticular adhesion site!</p>
+            <p>In my bachelor's thesis, I set out to investigate the protein pool associated with <strong>integrin &#946;5</strong> in culture conditions with enriched RA formation with the help of biotinylation-based <strong>proximity labeling</strong>! For this, I first tagged the cytoplasmic domain of integrin &#946;5 with the <strong>engineered peroxidase</strong> <em>APEX2</em>. This enzyme catalyzes the oxidation of biotin phenol, generating highly reactive <strong>biotin phenoxyl radicals</strong> which covalently bind to amino acids in <strong>neighboring proteins</strong> within a specific radius. This way, all proteins in subcellular proximity to integrin &#946;5 are labelled and can subsequently be pulled down over <strong>strepatividin beads</strong> for downstream analysis.</p>  
+            <p>Due to the thesis' time limitations, only one biotinylation run could actually be analyzed via <strong>mass spectrometry</strong>. Here, many proteins expected to be enriched (since they are known to occur at RAs) in fact didn't show any enrichment. Furthermore, proteins exclusively localized to the nucleus or ER were identified as enriched, despite integrin &#946;5 being associated with the plasma membrane. All of this implied that the biotinylation set-up wasn't yet powerful enough to produce meaningful readout beyond non-specific background biotinlytation and purification. Nonetheless, the established protocol served as a basis for other researchers to finetune and adapt the methodology to other RA constituents!</p>
+            <a class="projBtn projBtnO" href="#contact">Get in touch →</a>
+          </div>
+        </article>
+
+        <article class="projCard projMuted">
+          <div class="projBar"></div>
+          <div class="projScroll">
+            <div class="projMeta"><span class="projN">03</span><span class="projTag">cell biology</span></div>
+            <h3>Master's thesis -<br>linking RAs and the actin cytoskeleton</h3>
+            <div class="projImages">
+
+  <figure class="projFigure">
+    <div class="projImgSlot"><img src="img/meine masterarbeit/adhesion and actin scheme.png" alt="adhesion + actin scheme"></div>
+    <figcaption class="projCaption">
+      This schematic illstrutates the principle composition of <strong>cell-matrix adhesions</strong>. Here, membrane-spanning <strong>integrin clusters</strong> bind to extracellular ligands (such as <em>fibronectin</em>). Their intracellular domains are associated with a vast abundance of different <strong>regulatory</strong> as well as <strong>scaffold proteins</strong> which link the adhesion site to the intracellular <strong>actin cytoskeleton</strong>. This is not only important for the transduction of forces, e.g. in the context of <em>cell migration</em>, but also for <em>bilateral signaling</em>, allowing the cell to dynamically respond to internal stimuli or extracellular matrix cues. This schematic was adapted from the <u><em><a href="https://www.mbi.nus.edu.sg/mbinfo/what-are-mature-focal-adhesions-composed-of/">MBI Singapore</a></em></u>.
+    </figcaption>
+  </figure>
+
+  <figure class="projFigure">
+    <div class="projImgSlot"><img src="img/meine masterarbeit/graphs for cell density.png" alt="cell density"></div>
+    <figcaption class="projCaption">
+      A figure from my master's thesis that shows the quantification data obtained for microscopy images of wild-type epithelial cells seeded at different cell densities (ranging from 25,000 cells <em>25K</em> to 200,000 cells <em>200K</em> per well of 96 well plate). Here, the marker protein <em>Stonin1</em> was used as a proxy for <strong>reticular adhesions</strong> <em>RAs</em> and <em>F-tractin</em> was used to label <strong>filamentous actin</strong>. As can be seen in <strong><em>A</em></strong>, the total abundance of RAs keeps increasing with higher cell density! Conversely, the percentage of RAs associated with actin, as seen in <strong><em>C</em></strong>, only really numerically increases between <em>25K</em> and <em>50K</em> and then stays roughly the same for all densities. Thus, while more cell-cell contacts foster increased RA formation, the recruitment of actin filaments to RAs is mostly density-independent. The lack of statistical significance likely stems from the large variability between the analyzed data sets.
+    </figcaption>
+  </figure>
+
+  <figure class="projFigure">
+    <div class="projImgSlot"><img src="img/meine masterarbeit/FRAP.2.png" alt="FRAP"></div>
+    <figcaption class="projCaption">
+      This figure from my master's thesis shows the recovery data measured in FRAP experiments on specialized epithelial cell lines. During FRAP, short for <em>fluorescence recovery after photobleaching</em>, a target molecule tagged with a fluorescent marker is bleached with a strong laser pulse. The bleached area is then repeatedly imaged over time, measuring the amount of fluorescence recovery (analogous to the dynamic exchange capacities of the target molecule). In this case, I measured the recovery of <strong>F-actin</strong> in <strong>focal adhesions</strong> <em>FAs</em> as well as <strong>reticular adhesions</strong> <em>RAs</em>. As becomes evident from the difference in plateau values between the recovery curves, RAs seem to have a <em>lower</em> <strong>mobile F-actin fraction</strong> than FAs, since fewer fluorescent target molecules could be recovered in the same timespan. Conversely, the <strong>half-time</strong> <em>t1/2</em> is nearly identical between both adhesions, suggesting that the speed of F-actin exchange itself doesn't differ between adhesion types.
+    </figcaption>
+  </figure>
+
+</div>
+            <p>When I finished my bachelor's thesis, I didn't leave the Nanophysiology lab! Instead, I started working there as a research assistant, which gave me more experience and routine with wet lab techniques and fostered my organization and time management skills. And since I liked both the research topic as well as the people in the working group, I decided to stay for my master's thesis!</p>
+            <p>In my project, we focused on the availability of the key structural protein complex <strong>filamentous actin</strong> <em>F-actin</em> at sites of <strong>reticular adhesion</strong> <em>RAs</em>. Based on inhibitor assays, <u><em><a href="https://www.nature.com/articles/s41556-018-0220-2">Lock et al.</a></em></u> had previously described RAs to be completely actin-independent. And indeed, RAs can persist when their connection to the actin cytoskeleton is disrupted. However, when looking at cultured <strong>wild-type epithelial cells</strong>, it soon becomes evident that most RAs are in fact <strong>actively associated</strong> with actin filaments under standards conditions!</p>
+            <p>Thus, the goal of my project was to further elucidate the relationship between F-actin and RAs. For this, I performed a ton of <strong>immunostainings</strong> and subsequent <strong>image analysis</strong> to quantify the amount of actin-associated vs. non-associated RAs in epithelial cells under different conditions.</p>
+            <p>Here, I found that <strong>cell density</strong> critically influences RA formation, but not actin association. Conversely, certain <strong>kinase inhibitors</strong> showed prominent effects on RA-actin association, hinting towards an involvement of these kinases in the <em>recruitment</em> or <em>stabilization</em> of F-actin at RAs.</p>
+            <p>Furthermore, I also looked at several different <strong>actin-regulatory proteins</strong> that are known to mediate actin tethering and polymerization in focal adhesions, but were thus far thought to be absent from RAs. While interesting tendencies emerged, I was unable to conclusively pinpoint a certain protein as critical for RA-actin association. This was not only due to several <strong>experimental issues</strong> regarding <em>knockdown efficiency</em> and <em>cellular viability</em>, but likely also stems from the partial redundancy of the many different regulatory pathways involved.</p>
+            <p>Additional <strong>live-cell imaging</strong> and <strong>FRAP</strong> revealed that actin filaments seemed to be <em>more stable</em> at RAs compared to canonical adhesions and that, whilst some RAs actively lose F-actin tethering throughout their lifetime, their connection to the cytoskeleton could be critical for <strong>adhesion</strong> <em>assembly</em> and <em>disassembly</em>. Conclusively, despite the interesting glimpses gained in my master's project, a lot more research has to go into the complex protein interaction network surrounding RAs in order to better understand their interconnection to the actin cytoskeleton on a molecular as well as physiological level.</p>
+            <a class="projBtn projBtnM" href="#contact">Say hi →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- OUTSIDE -->
+    <section id="outside" class="section">
+      <div class="secLabel"><span class="secN">03</span><span class="secR"></span>Outside the Lab</div>
+      <h2>And who am I outside the lab?</h2>
+      <p class="secSub">Here are some of the people and things that make me happy and bring me joy!</p>
+      <div class="outsideGrid">
+        <article class="outsideCard" data-tilt>
+          <div class="outsideImg"><img src="img/outside of the lab/analog collage.jpg"  loading="lazy" decoding="async" alt="analogue"></div>
+          <div class="outsideBody">
+            <span class="oTag oTagT">Things</span>
+            <h3>Analogue photography</h3>
+            <p>Ten years ago I found my mum's analogue camera from the 90ies in an old drawer. I have been hooked eversince! My phone is already filled to the brim with digital pictures, so it's nice to take pictures that you can only get a few of and for which you actually have to wait to see them. Always exciting.</p>
+          </div>
+        </article>
+        <article class="outsideCard" data-tilt>
+          <div class="outsideImg"><img src="img/outside of the lab/omicka collage.png" loading="lazy" decoding="async" alt="omicka"></div>
+          <div class="outsideBody">
+            <span class="oTag oTagO">People</span>
+            <h3>Family</h3>
+            <p>My grandma — aka my favourite human. I spend a lot of time with her and even lived with her for some time while growing up. She is like a ray of sunshine on a cloudy day!</p>
+          </div>
+        </article>
+        <article class="outsideCard" data-tilt>
+          <div class="outsideImg"><img src="img/outside of the lab/friends collage.jpg" loading="lazy" decoding="async" alt="friends"></div>
+          <div class="outsideBody">
+            <span class="oTag oTagO">People</span>
+            <h3>Friends</h3>
+            <p>My friends are like a second family to me! They stand by my side, lift me up when I'm down and bring so much joy to my life. Some of them I met through university, others at local events (such as queer boardgame nights, etc.), some I still know from school. We love to hang out together, especially in nature, or go dancing on the weekends. Sometimes, we also travel together, either discovering new places or returning to little cottages to spend some quality time together.</p>
+          </div>
+        </article>
+        <article class="outsideCard" data-tilt>
+          <div class="outsideImg"><img src="img/outside of the lab/flags collage.png" loading="lazy" decoding="async" alt="languages"></div>
+          <div class="outsideBody">
+            <span class="oTag oTagT">Things</span>
+            <h3>Languages</h3>
+            <p>I'm a big language and linguistics nerd! My family is from Czechia, so I speak Czech from home. But over the years, I have started learning what must have been like a dozen other languages (few of them stick, unfortunately). One of them is brazilian portuguese, a language that I fell in love with and that I was able to get to B2 level. I even invented my very own language called <em>antanì</em> which is a mix of polynesian phonetics and indo-european grammar!</p>
+          </div>
+        </article>
+        <article class="outsideCard" data-tilt>
+          <div class="outsideImg"><img src="img/outside of the lab/sonst collage.jpg" loading="lazy" decoding="async" alt="sonst"></div>
+          <div class="outsideBody">
+            <span class="oTag oTagT">Things</span>
+            <h3>Travelling, Art & Nature</h3>
+            <p>When I have enough money and free time, I love to travel to discover new places and get to know new languages and cultures! I also love going to museums to look at art. Here, I definitely prefer modern art over renaissance art (I get tired of portraits). The second picture was taken at the Guggenheim in Bilbao, an amazing museum for modern art with quite the perplexing architecture! Furthermore, I love being outside in nature. The mountains are great, but my favorite place to be is the beach. I want to live near an ocean one day, it's one of my life goals!</p>
+            </div>
+        </article>
+            <article class="outsideCard" data-tilt>
+          <div class="outsideImg"><img src="img/outside of the lab/tiimur collage.png" loading="lazy" decoding="async" alt="timur"></div>
+          <div class="outsideBody">
+            <span class="oTag oTagO">People</span>
+            <h3>My partner</h3>
+            <p>I also want to mention my life partner Timur. He's an informatics student. We met over four years ago and I am so happy that he is walking the road of life together with me til this day!</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    
+    <!-- REFERENCES -->
+<section id="references" class="section">
+
+  <div class="secLabel">
+    <span class="secN">04</span>
+    <span class="secR"></span>
+    References
+  </div>
+
+  <h2>Academic references</h2>
+
+  <p class="secSub">
+    If you would like to learn more about my work, my former supervisors are
+    happy to provide additional information.
+  </p>
+
+  <div class="refGrid">
+
+    <!-- Reference 1 -->
+    <article class="refCard">
+
+      <div class="refImage">
+        <img src="img/references/tanja.jpg" alt="Professor 1">
+      </div>
+
+      <div class="refBody">
+
+        <h3>Prof. Dr. Tanja Maritzen</h3>
+
+        <p class="refRole">
+          Head of Nanophysiology<br>
+          RPTU Kaiserslautern
+        </p>
+
+        <p class="refText">
+          Supervisor of my bachelor's and master's thesis.
+        </p>
+
+        <a href="mailto:maritzen@rptu.de" class="refMail">
+          maritzen@rptu.de
+        </a>
+
+      </div>
+
+    </article>
+
+
+    <!-- Reference 2 -->
+    <article class="refCard">
+
+      <div class="refImage">
+        <img src="img/references/prof2.jpg" alt="Professor 2">
+      </div>
+
+      <div class="refBody">
+
+        <h3>Dr. Sabine Filker</h3>
+
+        <p class="refRole">
+          Molecular Ecology Group Leader<br>
+          RPTU Kaiserslautern
+        </p>
+
+        <p class="refText">
+          Supervisor during a research practical.
+        </p>
+
+        <a href="mailto:max.mustermann@rptu.de" class="refMail">
+          max.mustermann@rptu.de
+        </a>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+    <!-- CONTACT -->
+<section id="contact" class="section sContact">
+  <div class="secLabel"><span class="secN">05</span><span class="secR"></span>Contact</div>
+
+  <div class="contactLayout">
+
+    <!-- LEFT: Image -->
+    <div class="contactImage">
+      <img src="img/IchBeimAutoklav.jpeg" alt="Nicolas portrait">
+    </div>
+
+    <!-- RIGHT: Text + contact -->
+    <div class="contactRight">
+
+      <h2 class="contactTitle">
+        If you like what you've seen,<br>get in touch with me!
+      </h2>
+
+      <div class="contactGrid">
+        <a class="contactCard ccT" href="mailto:nicolas_bayer@gmx.de">
+          <span class="ccIcon">✉</span>
+          <div>
+            <p class="ccLabel">E-mail</p>
+            <p class="ccVal">nicolas_bayer@gmx.de</p>
+          </div>
+        </a>
+
+        <a class="contactCard ccO" href="tel:+4915734407358">
+          <span class="ccIcon">↗</span>
+          <div>
+            <p class="ccLabel">Phone</p>
+            <p class="ccVal">+49 157 344 07358</p>
+          </div>
+        </a>
+      </div>
+
+      <footer class="footer">
+        <span>© <span id="year"></span> Nicolas</span>
+        <span class="sep">·</span>
+        <a href="#top">Back to top ↑</a>
+      </footer>
+
+    </div>
+
+  </div>
+</section>
+
+  </main>
+
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  <script src="script_BIO.js" defer></script>
+</body>
+</html>
